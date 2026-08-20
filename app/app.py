@@ -1,8 +1,8 @@
 from typing import List, Dict, Any
 
 from dotenv import load_dotenv
-from langchain.callbacks.base import BaseCallbackHandler
-from langchain_openai import ChatOpenAI
+from langchain_core.callbacks import BaseCallbackHandler
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages.utils import convert_to_messages
 
 import streamlit as st
@@ -47,8 +47,8 @@ def main():
     # First, we need to choose an LLM from OpenAI's list of models. Remember
     # to set streaming=True for streaming tokens
     ##########################################################################
-    chain = ChatOpenAI(
-        model='gpt-4.1-mini',
+    chain = ChatGoogleGenerativeAI(
+        model='gemini-3.7-flash',
         temperature=0,
         streaming=True,
         max_tokens=8192
