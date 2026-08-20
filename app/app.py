@@ -6,7 +6,7 @@ st.set_page_config(
     page_icon="🤖",
     layout="wide"
 )
-st.title("🤖 Chat Echo Bot")
+st.title("🤖 Chat Echo Bot 666")
 
 ##############################################################################
 # Exercise 1a:

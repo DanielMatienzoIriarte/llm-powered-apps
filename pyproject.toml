@@ -1,0 +1,17 @@
+[project]
+name = "hands-on-ai-building-llm-powered-apps-4080077"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "danielmatienzoiriarte", email = "daniel.matienzo.iriarte@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+hands-on-ai-building-llm-powered-apps-4080077 = "hands_on_ai_building_llm_powered_apps_4080077:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
