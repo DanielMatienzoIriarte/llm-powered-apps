@@ -1,21 +1,19 @@
 import logging
 from typing import List, Dict, Any, Tuple
-
 from dotenv import load_dotenv
-from langchain.callbacks.base import BaseCallbackHandler
-from langchain.schema import Document
-from langchain_openai import ChatOpenAI
-from langchain.vectorstores.base import VectorStore
-
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_core.callbacks import BaseCallbackHandler
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
-from langchain.memory import ConversationBufferWindowMemory
+from langchain_core.documents import Document
+from langchain_openai import ChatOpenAI
+from langchain_community.vectorstores import VectorStore
+from langchain_classic.memory import ConversationBufferMemory
 from langchain_core.messages import HumanMessage, AIMessage
-import streamlit as st
-
 from utils import process_file, create_search_engine
 from prompt import PROMPT, WELCOME_MESSAGE
 
+import streamlit as st
 
 load_dotenv()
 
@@ -57,12 +55,11 @@ def create_qa_chain(vector_store: VectorStore, api_key: str) -> Tuple[Any, Any]:
             - chain: The LCEL chain for question answering
             - retriever: The document retriever
     """
-    llm = ChatOpenAI(
-        model='gpt-4.1-mini',
+    llm = ChatGoogleGenerativeAI(
+        model='gemini-3.7-flash',
         temperature=0,
         streaming=True,
-        max_tokens=8192,
-        api_key=api_key
+        max_tokens=8192
     )
 
     # Create retriever
